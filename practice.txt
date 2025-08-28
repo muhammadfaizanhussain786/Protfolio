@@ -1,0 +1,24 @@
+383
+316
+
+<div class="md:relative md:w-[500px] md:mr-[30px] md:mt-10 flex flex-col items-center mt-10">
+  <!-- Gray background box -->
+  <div class="background w-[90%] h-[350px] bg-gray-200 rounded md:absolute md:top-6 md:left-10 md:w-[250px] md:h-full"></div>
+  
+  <!-- image -->
+  <img src="picture/my-img1.jpg" alt="Profile" 
+       class="z-10 w-[80%] mt-[-20px] md:w-[250px] rounded md:shadow-2x1 mt-[-320px] md:mt-0" />
+</div>
+
+<!-- Image with 500px width -->
+ <!-- Bigger background frame -->
+
+<div class="relative md:w-[500px] md:mx-auto md:mr-[30px] md:mt-10 flex flex-col items-center">
+ <!-- Bigger background frame -->
+  <div class="bg-gray-200 rounded md:absolute md:top-6 md:left-10 md:w-[250px] md:h-full w-[90%] h-[300px] "></div>
+  
+<!-- Image -->
+  <img src="picture/my-img1.jpg" alt="Profile" 
+       class="z-10 w-[80%] md:w-[250px] rounded md:shadow-2x1 mt-[-320px] md:mt-0 " />
+</div>
+    
