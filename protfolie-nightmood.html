@@ -1,369 +1,280 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- font awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- tailwind css link -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-      html {
-        scroll-behavior: smooth;
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { 
+        overflow-x: hidden; 
+        width: 100vw; 
+        margin: 0; 
+        font-family: 'Poppins', sans-serif; 
       }
-      .div5-contant .div5-img1{
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+      
+      /* Project images ke liye custom round corners */
+      .div5-img1 { border-top-left-radius: 10px; border-top-right-radius: 10px; }
+      .div5-img2 { border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; }
 
-         }
-         .div5-contant .div5-img2{
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
+      /* Waving hand ki animation */
+      @keyframes wave {
+        0%, 100% { transform: rotate(0deg); }
+        20% { transform: rotate(-8deg); }
+        40% { transform: rotate(14deg); }
+        60% { transform: rotate(-4deg); }
+        80% { transform: rotate(10deg); }
+      }
+      .wave { display: inline-block; animation: wave 2s infinite; transform-origin: 70% 70%; }
 
-         }
-.font-poppins {
-    font-family: 'Poppins', sans-serif;
-  }
-  @keyframes wave {
-      0% { transform: rotate(0deg); }
-      10% { transform: rotate(14deg); }
-      20% { transform: rotate(-8deg); }
-      30% { transform: rotate(14deg); }
-      40% { transform: rotate(-4deg); }
-      50% { transform: rotate(10deg); }
-      60% { transform: rotate(0deg); }
-      100% { transform: rotate(0deg); }
-    }
-
-    .wave {
-      display: inline-block;
-      animation: wave 2s infinite;
-      transform-origin: 70% 70%;
-    }
-</style>
+      /* Sidebar ko toggle karne ka logic */
+      #menu-toggle:checked ~ .mobile-sidebar { transform: translateX(0); }
+    </style>
   </head>
-  <body class="text-white bg-[#030712]">
-  
- <div class="relative">
-  <!-- Checkbox for toggle -->
-  <input type="checkbox" id="menu-toggle" class="peer hidden">
 
-  <!-- Navbar Top -->
-  <div class="flex md:items-center md:justify-center z-50 md:space-x-110 w-full  md:py-4 bg-[#030712]/30 backdrop-blur fixed md:mt-[-90px] md:font-medium ">
+  <body class="bg-[#030712] text-gray-300">
+    
+    <div class="relative">
+      <input type="checkbox" id="menu-toggle" class="peer hidden">
 
-<!-- logo -->
- <div class="flex md:space-x-0 space-x-60 mt-4 md:mt-[0] pl-5 pr-5">
-<div class="flex items-center gap-3 group cursor-pointer md:pr-5">
-  <div class="w-10 h-10 flex items-center justify-center bg-white text-black font-bold text-lg rounded-full">
-    MF
-  </div>
-  <h1 class="text-2xl font-bold text-white hidden md:block">
-    M. Faizan Hussain
-  </h1>
-</div>
-
-    <!-- Hamburger Icon -->
-    <label for="menu-toggle" class="md:hidden text-2xl cursor-pointer">
-      ☰
-    </label>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex items-center space-x-6">
-      <a href="#about" class="text-white hover:text-gray-200">About</a>
-      <a href="#skills" class="text-white hover:text-gray-200">Skills</a>
-      <a href="#work" class="text-white hover:text-gray-200">Work</a>
-      <a href="#get-a-touch" class="text-white hover:text-gray-200">Contact</a>
-      <a href="" class="h-6 w-px bg-gray-300 mx-2"></a>
-      <button class="text-xl cursor-pointer"><a href="index.html"><img src="picture/sun.png" class="h-[25px]" alt=""></a></button>
-      <a href="My-CV-professional.pdf" class="bg-white text-black px-4 py-2 rounded-full">Download CV</a>
-    </div>
-  </div>
-
-  <!-- Mobile Sidebar Menu -->
-  <div class="fixed top-0 left-0 h-full w-64 bg-white z-50 transform -translate-x-full peer-checked:translate-x-0 transition-transform duration-300 shadow-md md:hidden">
-    <div class="flex justify-between items-center px-6 py-4 border-b">
-      <div class="text-2xl font-bold">M.Faizan Hussain</div>
-      <!-- Close Button -->
-      <label for="menu-toggle" class="text-2xl cursor-pointer">✕</label>
-    </div>
-
-    <!-- Menu Items -->
-    <div class="flex flex-col space-y-4 px-6 py-6">
-    <a href="#about" class="text-gray-600 font-medium hover:text-black ">About</a>
-        <a href="#skills  " class="text-gray-600 font-medium hover:text-black ">skills</a>
-        <a href="#work" class="text-gray-600 font-medium hover:text-black ">Work</a>
-        <a href="#get-a-touch" class="text-gray-600 font-medium hover:text-black ">Contact</a>
-
-      <hr class="my-2">
-
-      <!-- Theme toggle -->
-      <div class="flex justify-between items-center">
-        <button class="text-xl"><a href="protfolie-nightmood.html"><img src="picture/moon.png" class="h-[25px]" alt=""></a></button>
-      </div>
-
-      <!-- CV Button -->
-      <a href="My-CV-professional.pdf" class="bg-gray-900 text-white text-center px-4 py-2 rounded-full hover:bg-gray-700 transition">
-        Download CV
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- div1 -->
-    <div class="md:flex md:justify-between md:space-x-70 md:mt-[90px] md:items-center md:w-[90%] md:ml-[90px] md:flex-row flex flex-col-reverse pl-4 md:pl-[0] pr-5">
-
-<div class="w-full max-w-5xl mx-auto">
-        <h1 class="md:text-6xl text-left font-bold text-3xl md:mt-[-50px]">Hi, I'm Faizan<span class="wave">👋</span></h1>
-        <p class="md:mt-[20px] text-left">I'm studying in full stack developer (HTML, CSS, Bootstrap, Tailwindcss) with a focus on creating (and occasionally designing) exceptional digital experiences that are fast, accessible, visually appealing, and responsive. Even though I have been creating web applications for over 7 Months, I still love it as if it was something new</p>
-        <div class="location flex items-center space-x-6 mt-[60px]">
-          <i class="fa-solid fa-location-dot text-2xl"></i>
-          <p>Korangi Crossing, Pakistan</p>
+      <nav class="flex items-center justify-between z-50 px-6 md:px-20 py-4 bg-[#030712]/80 backdrop-blur fixed w-full top-0 border-b border-gray-800">
+        <div class="flex items-center gap-3 cursor-pointer">
+          <div class="w-10 h-10 flex items-center justify-center bg-white text-black font-bold text-lg rounded-full">MF</div>
+          <h1 class="text-xl font-bold text-white hidden md:block">M. Faizan Hussain</h1>
         </div>
-        <div class="available-project flex items-center space-x-6 mt-[10px]">
-          <span class="inline-block w-[10px] h-[10px] bg-green-500 rounded-full animate-ping"></span>
-          <p class="ml-[5px]">Available for new project</p>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#about" class="hover:text-white transition">About</a>
+          <a href="#skills" class="hover:text-white transition">Skills</a>
+          <a href="#work" class="hover:text-white transition">Work</a>
+          <a href="#get-a-touch" class="hover:text-white transition">Contact</a>
+          <div class="h-6 w-px bg-gray-700"></div>
+          <a href="index.html" class="hover:scale-110 transition">
+            <img src="picture/sun.png" class="h-6" alt="Light Mode">
+          </a>
+          <a href="My-CV-professional.pdf" class="bg-white text-black px-5 py-2 rounded-full font-medium hover:bg-gray-200 transition">Download CV</a>
+        </div>
+
+        <label for="menu-toggle" class="md:hidden text-2xl text-white cursor-pointer">☰</label>
+      </nav>
+
+      <div class="mobile-sidebar fixed top-0 left-0 h-full w-72 bg-[#111827] z-[60] transform -translate-x-full transition-transform duration-300 shadow-2xl md:hidden">
+        <div class="flex justify-between items-center px-6 py-5 border-b border-gray-800">
+          <div class="text-xl font-bold text-white">Faizan.</div>
+          <label for="menu-toggle" class="text-3xl text-white cursor-pointer">&times;</label>
+        </div>
+        <div class="flex flex-col space-y-6 px-6 py-8">
+          <a href="#about" class="text-lg hover:text-white">About</a>
+          <a href="#skills" class="text-lg hover:text-white">Skills</a>
+          <a href="#work" class="text-lg hover:text-white">Work</a>
+          <a href="#get-a-touch" class="text-lg hover:text-white">Contact</a>
+          <hr class="border-gray-800">
+          <a href="index.html" class="flex items-center gap-2 text-white">
+            <img src="picture/sun.png" class="h-5"> Light Mode
+          </a>
+          <a href="My-CV-professional.pdf" class="bg-white text-black text-center py-3 rounded-full font-bold">Download CV</a>
         </div>
       </div>
-
- <!-- Profile Image -->
-     <div class="relative w-full max-w-[350px] mx-auto mt-10 md:mb-20 md:mr-10">
-        <!-- Background frame --> 
-        <div class="absolute md:top-5  left-15 md:w-[70%] w-[60%] h-full bg-[#374151] rounded "></div>
-        <!-- Profile image -->
-        <img src="picture/my-img5.jpeg" alt="Profile" class="relative z-10 md:w-[70%] w-[60%] rounded shadow-2xl max-w-full left-10" />
-      </div>
-</div>
-
-<div class="div1-flexlogo flex items-center space-x-6 text-2xl w-[90%]  ml-[85px] mt-[20px]">
-<i class="fa-brands fa-github cursor-pointer hover:scale-105 transition-transform duration-300"></i>
-<i class="fa-brands fa-twitter cursor-pointer hover:scale-105 transition-ransform duration-300"></i>
-<i class="fa-brands fa-figma cursor-pointer hover:scale-105 transition-transform duration-300"></i>
-</div>
-
-<!-- About div2 -->
-
-<div class="flex main-div2 bg-[#111827] w-full mt-12 pt-12 px-5 sm:px-10 h-full pb-10">
-  
-  <!-- "About me" button -->
-   <div id="about" class="parent flex flex-col pr-5">
-
-  <div class=" md:flex md:justify-center mt-10 pl-[35%] md:pl-[0]">
-    <button class="rounded-xl bg-[#374151] md:w-28 md:h-8 w-30 h-8">About me</button>
-  </div>
-  
-  <div class="child md:flex md:items-center md:gap-30">
-    <!-- Profile Image -->
-  <div class="relative mx-auto md:mx-0 md:mr-10 md:ml-20 ml-25 mt-10 ">
-    <!-- Background frame -->
-    <div class="absolute  md:top-5 md:left-5 top-4 left-4 w-[70%] md:w-full h-full bg-[#374151] rounded "></div>
-    <!-- Profile image -->
-    <img src="picture/my-image.jpeg" alt="Profile" class="relative z-10 w-[70%] md:w-full rounded shadow-2xl" />
-  </div>
-
-    <!-- Text Section -->
-    <section class="max-w-3xl w-full mt-20 ">
-      <div class="text-left">
-        <span class="text-white md:font-medium md:text-lg md:block">Hi, my name is M. Faizan Hussain</span>
-        <p class="text-white md:text-lg mb-2">
-          I am a <span class="font-semibold text-white">UI developer</span> and currently studying Full Stack Development.
+    </div>
+    <section class="flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-20 pt-32 pb-20 max-w-7xl mx-auto gap-12">
+      <div class="w-full md:w-2/3">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Hi, I'm Faizan <span class="wave">👋</span></h1>
+        <p class="text-lg leading-relaxed text-gray-400 mb-8">
+          I'm a Full Stack Developer student (HTML, CSS, Bootstrap, TailwindCSS) focused on creating digital experiences that are fast, accessible, and visually appealing.
         </p>
-        <p class="text-white md:text-lg">
-          I have gained proficiency in <span class="font-medium text-white">HTML</span>, 
-          <span class="font-medium text-white">CSS</span>, 
-          <span class="font-medium text-white">Bootstrap</span>, and 
-          <span class="font-medium text-white">Tailwind CSS</span>.
-        </p>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-location-dot text-xl text-white"></i>
+            <span>Korangi Crossing, Pakistan</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span>Available for new projects</span>
+          </div>
+        </div>
+        <div class="flex gap-6 mt-10 text-2xl text-gray-400">
+          <i class="fa-brands fa-github hover:text-white cursor-pointer transition"></i>
+          <i class="fa-brands fa-twitter hover:text-white cursor-pointer transition"></i>
+          <i class="fa-brands fa-figma hover:text-white cursor-pointer transition"></i>
+        </div>
       </div>
-
-      <p class="md:text-lg text-white mt-4">
-        Even though I’m at the start of my development journey, I’m truly excited about learning how websites and web apps are made. I enjoy experimenting with layouts, styling pages, and understanding how frontend code works.
-      </p>
-
-      <p class="md:text-lg text-white mt-4">
-        I have <span class="font-medium">1 year</span> of experience in UI development, and I am continuously improving my skills by building projects regularly.
-      </p>
-
-      <div class="mt-6">
-        <h3 class="text-2xl font-semibold mb-3">🔍 Quick Facts:</h3>
-        <ul class="list-disc list-inside text-white space-y-2">
-          <li><strong>HTML, CSS, Bootstrap, Tailwind CSS</strong></li>
-          <li><strong>1 year</strong> of experience</li>
-          <li>Focused on Modern Web & App Development</li>
-          <li>Excited to grow in the world of web development</li>
-        </ul>
+      <div class="relative w-64 md:w-80">
+        <div class="absolute top-4 left-4 w-full h-full border-4 border-gray-800 rounded-lg"></div>
+        <img src="picture/my-img5.jpeg" class="relative z-10 rounded-lg shadow-2xl" alt="Faizan Hussain">
       </div>
-
-      <p class="mt-6 md:text-lg text-white">
-        💬 I am always ready to work on UI development and new ideas.
-      </p>
-
-      <p id="skills" class="mt-4 md:text-lg text-white">
-        One last thing, I'm available for UI Development, so feel free to reach out 😉
-      </p>
     </section>
-</div>
-  </div>
-</div>
 
-
-<!-- skills div3 -->
-
-<div class="mt-10 justify-center flex"><button class="rounded-xl bg-[#374151] w-[100px] h-[30px] ">Skills</button></div>
-<p class="flex justify-center mt-4 text-center">The skills, tools and technologies I am really good at:</p>
-<div class="mt-10 px-4">
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:flex justify-center gap-8 flex-wrap">
+    <!-- about -->
+     <section id="about" class="bg-[#111827] py-20 px-6 md:px-20">
+  <div class="max-w-6xl mx-auto flex flex-col items-center">
     
-    <div class="text-center">
-      <img src="picture/html-logo.png" alt="HTML" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">HTML</p>
-    </div>
+    <button class="bg-gray-800 text-gray-300 px-4 py-1 rounded-full text-sm mb-12 cursor-default">
+      About me
+    </button>
 
-    <div class="text-center">
-      <img src="picture/css-logo.png" alt="CSS" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">CSS</p>
-    </div>
+    <div class="flex flex-col md:flex-row gap-16 items-start">
+      
+    <div class="relative w-full max-w-[240px] md:max-w-[280px] mx-auto md:mx-0">
+    <div class="absolute -bottom-4 -right-2 md:-right-4 w-full h-full border-4 border-gray-800 rounded-lg"></div>
+    <img src="picture/my-image.jpeg" class="relative z-10 rounded-lg shadow-xl w-full h-auto object-cover" alt="M. Faizan Hussain">
+     </div>
 
-    <div class="text-center">
-      <img src="picture/tailwindcss-logo.png" alt="Tailwind CSS" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">Tailwind CSS</p>
-    </div>
+      <div class="w-full md:w-2/3">
+        <h2 class="text-3xl font-bold text-white mb-6">Hi, my name is M. Faizan Hussain</h2>
+        
+        <p class="text-lg mb-4 text-gray-400">
+          I am a <span class="font-semibold text-white">Modern Web & App Developer</span> and currently studying Full Stack Development. 
+          I have gained proficiency in <span class="font-medium text-white">HTML, CSS, Javascript, Bootstrap, and Tailwind CSS</span>.
+        </p>
 
-    <div class="text-center">
-      <img src="picture/bootstrap-logo.png" alt="Bootstrap" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">Bootstrap</p>
-    </div>
+        <p class="text-lg mb-4 text-gray-400 leading-relaxed">
+          Even though I’m at the start of my development journey, I’m truly excited about learning how websites and web apps are made. 
+          I enjoy experimenting with layouts, styling pages, and understanding how frontend code works.
+        </p>
 
-    <div class="text-center">
-      <img src="picture/figma-logo.png" alt="Figma" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">Figma</p>
-    </div>
+        <p class="text-lg mb-6 text-gray-400">
+          I have <span class="font-medium text-white">1 year</span> of experience in Modern Web & App Development, 
+          and I am continuously improving my skills by building projects regularly.
+        </p>
+        
+        <h3 class="text-xl font-bold text-white mb-4">🔍 Quick Facts:</h3>
+        <ul class="list-disc list-inside space-y-2 text-lg text-gray-400">
+          <li><strong class="text-white">HTML, CSS, Javascript, Bootstrap, Tailwind CSS</strong></li>
+          <li><strong class="text-white">1 year</strong> of experience</li>
+          <li>Focused on Full Stack Development</li>
+          <li>Excited to grow in the world of Modern web & App Development</li>
+        </ul>
 
-    <div class="text-center">
-      <img src="picture/github-logo1.png" alt="GitHub" class="md:w-[70px] md:h-[70px] w-[50px] h-[50px] mx-auto">
-      <p class="mt-2">GitHub</p>
-    </div>
+        <p class="mt-6 text-lg text-gray-300 italic">
+          💬 I am always ready to work on Web development and new ideas. Feel free to reach out 😉
+        </p>
+      </div>
 
-  </div>
-</div>
+    </div> </div> </section>
 
+    <!-- skils -->
+    <section id="skills" class="py-20 px-6 text-center">
+      <button class="bg-gray-800 px-4 py-1 rounded-full text-sm mb-4">Skills</button>
+      <p class="mb-12 text-gray-400">Technologies I am good at:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8 max-w-5xl mx-auto">
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/html-logo.png" class="h-16 mx-auto mb-2"><p>HTML</p></div>
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/css-logo.png" class="h-16 mx-auto mb-2"><p>CSS</p></div>
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/tailwindcss-logo.png" class="h-16 mx-auto mb-2"><p>Tailwind</p></div>
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/bootstrap-logo.png" class="h-16 mx-auto mb-2"><p>Bootstrap</p></div>
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/figma-logo.png" class="h-16 mx-auto mb-2"><p>Figma</p></div>
+        <div class="hover:scale-110 transition cursor-pointer"><img src="picture/github-logo1.png" class="h-16 mx-auto mb-2"><p>GitHub</p></div>
+      </div>
+    </section>
 
-</div>
-
-<!-- Experience div4 -->
-
-<div class=" bg-[#111827] w-full mt-20 pt-4 pb-25">
-<div class="mt-15 justify-center flex"><button class="rounded-xl bg-[#374151] w-[100px] h-[30px] ">Experience</button></div>
-<p class="mt-5 flex justify-center text-center">Here is a quick summary of my most resent experiences:</p>
-<center>
-
-<div class="md:flex md:h-[260px] md:w-[800px] bg-[#1F2937] md:justify-between md:p-7 mt-10 rounded-xl md:flex-row flex flex-col p-7"> 
-<div class="text-green-600 font-bold text-4xl w-[200px] md:w-[150px] text-left p-2 md:flex md:justify-center">Self</div>
-<div class="md:w-3/4 text-left "><h1 class="text-2xl font-medium mt-2">Front-End Developer</h1>
-<li class="mt-4">Made responsive websites with HTML, CSS, Bootstrap, and Tailwind.</li>
-<li>Used Tailwind to create clean and modern UI designs.</li>
-<li>Added blur effect to navbar and other UI parts.</li>
-<li>Built simple projects and class assignments.</li>
-<li>Worked in group projects using GitHub.</li>
-<li>Practiced mobile-friendly (responsive) design.</li>
-</div>
-</div>
-
-</div>
-</center>
-
-<!-- Work div5 -->
- 
-<center>
-<div id="work" class="mt-20">
-<div class="mt-15 justify-center flex text-center"><button class="rounded-xl bg-[#374151] w-[100px] h-[30px]">Work</button></div>
-<p class="text-center mt-[20px]">Some of the noteworhy projects I have built:</p>
-
-<!-- project 1 -->
-<div class="shadow-lg md:w-[1100px] md:h-[520px] mt-10 pt-10 bg-[#1F2937] rounded-xl flex md:flex-row flex-col w-[90%]">
-
-  <div class="div5-contant md:w-[550px]">
-    <img src="picture/project-pic/coffee-web.JPG" alt="coffee" class="div5-img1 md:w-[450px] w-[80%]">
-    <img src="picture/project-pic/coffee-web1.JPG" alt="" class="div5-img2 md:w-[450px] mt-2 w-[80%]">
-  </div>
+<!-- experience -->
+<div class="bg-[#111827] py-20 px-6 md:px-20 text-center">
   
-  <div class="md:w-[550px] w-[90%] md:p-[0] p-[10%]">
-    <p class="md:text-4xl text-3xl font-bold text-left">Coffee</p>
-    <p class=" text-left mt-10 md:pr-5">I cre1ated this coffee website using HTML, CSS, Tailwind CSS, and Bootstrap.It features a modern and clean layout that works smoothly on all devices.</p>
-    <p class=" text-left mt-7 md:pr-5">The site is fully responsive and user-friendly, with sections like menu, about, and contact.It showcases different coffee types and allows users to explore easily.</p>
+  <button class="rounded-xl bg-[#374151] text-gray-300 px-6 py-1 mb-6 cursor-default">
+    Experience
+  </button>
+  
+  <p class="mb-12 text-gray-400">Here is a quick summary of my most recent experiences:</p>
+
+  <div class="max-w-4xl mx-auto bg-[#1F2937] rounded-xl shadow-2xl p-8 md:flex gap-10 text-left border border-gray-800">
     
-    <div class="flex mt-7 flex-wrap">
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">HTML:5</p>
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">CSS:3</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl ">Tailwind css</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl">Bootstrap</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- project 2 -->
-
-<div class="shadow-lg md:w-[1100px] md:h-[520px] mt-10 pt-10 bg-[#1F2937] rounded-xl flex md:flex-row flex-col w-[90%]">
-
-   <div class="div5-contant md:w-[550px]">
-    <img src="picture/project-pic/asharib1.JPG" alt="coffee" class="div5-img1 md:w-[450px] w-[80%]">
-    <img src="picture/project-pic/asharib2.JPG" alt="" class="div5-img2 md:w-[450px] w-[80%] mt-2">
-  </div>
-
-    <div class="md:w-[550px] w-[90%] p-[10%] md:p-[0] ">
-    <p class="md:text-4xl text-3xl font-bold text-left">Foodie</p>
-    <p class=" text-left mt-10 md:pr-5">Foodie is an online website where people can find tasty and fresh food.It has many options like burgers, salads, and sandwiches.The pictures and prices of the food are also shown clearly.</p>
-    <p class=" text-left mt-7 md:pr-5">The website also tells about the chefs who cook the food.Customers can read reviews and ratings for every item.This helps new users decide what to order easily.
-</p>
+    <div class="text-green-500 font-bold text-3xl mb-4 md:mb-0">Self</div>
     
-     <div class="flex mt-7 flex-wrap">
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">HTML:5</p>
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">CSS:3</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl ">Tailwind css</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl">Bootstrap</p>
+    <div>
+      <h2 class="text-2xl font-bold text-white mb-4">Modern Web & App Developer</h2>
+      
+      <ul class="list-disc list-outside ml-5 space-y-2 text-gray-400">
+        <li>Made <span class="text-white">responsive websites</span> with HTML, CSS, Javascript, Bootstrap, and Tailwind.</li>
+        <li>Used <span class="text-white">Tailwind</span> to create clean and modern UI designs.</li>
+        <li>Added <span class="text-white">blur effects</span> to navbar and UI components.</li>
+        <li>Built latest projects and academic assignments.</li>
+        <li>Worked in <span class="text-white">group projects</span> using GitHub for version control.</li>
+        <li>Expertise in <span class="text-white">Mobile-friendly</span> (responsive) design principles.</li>
+      </ul>
     </div>
-  </div>
-</div>
-
-
-<!-- project 3 -->
-
-<div class="shadow-lg md:w-[1100px] md:h-[520px] mt-10 pt-10 bg-[#1F2937] rounded-xl flex md:flex-row flex-col w-[90%]">
-
-   <div class="div5-contant md:w-[550px]">
-    <img src="picture/project-pic/raziq1.JPG" alt="coffee" class="div5-img1 md:w-[450px] w-[80%]">
-    <img src="picture/project-pic/raziq2.JPG" alt="" class="div5-img2 md:w-[450px] w-[80%] mt-2">
-  </div>
-  <div class="md:w-[550px] w-[90%] p-[10%] md:p-[0] ">
-    <p class="md:text-4xl text-3xl font-bold text-left">Bakery</p>
-    <p class=" text-left mt-10 md:pr-5">This is a responsive single-page food and bakery website built using HTML, CSS, Tailwind CSS, and Bootstrap.It features multiple sections such as a navbar, product cards, promotional banners, about us, and a modern footer layout.</p>
-    <p class=" text-left mt-7 md:pr-5">The site includes interactive elements like a hamburger menu for mobile view and product buttons.It is designed to work smoothly on all devices, offering users a clean and engaging browsing experience.</p>
-    <div class="flex mt-7 flex-wrap">
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">HTML:5</p>
-      <p class="bg-[#374151] w-20 h-7 rounded-xl">CSS:3</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl ">Tailwind css</p>
-      <p class="bg-[#374151] w-30 h-7 rounded-xl">Bootstrap</p>
+    
+  </div> </div>
+    
+    
+    <section id="work" class="bg-[#030712] py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <button class="bg-gray-800 text-gray-300 px-4 py-1 rounded-full text-sm mb-4 cursor-default">Work</button>
+      <p class="text-gray-400">Some of the noteworthy projects I have built:</p>
     </div>
+
+    <div class="flex flex-col md:flex-row bg-[#1F2937] rounded-2xl overflow-hidden mb-16 shadow-2xl border border-gray-800">
+      <div class="md:w-1/2 p-6 md:p-10 bg-[#111827] flex flex-col gap-3 justify-center items-center">
+        <img src="picture/project-pic/coffee-web.JPG" alt="Coffee Web 1" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+        <img src="picture/project-pic/coffee-web1.JPG" alt="Coffee Web 2" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <h3 class="text-3xl font-bold text-white mb-6">Coffee</h3>
+        <p class="text-gray-400 mb-4 leading-relaxed">I created this coffee website using HTML, CSS, Tailwind CSS, and Bootstrap. It features a modern and clean layout that works smoothly on all devices.</p>
+        <p class="text-gray-400 mb-8 leading-relaxed">The site is fully responsive and user-friendly, with sections like menu, about, and contact. It showcases different coffee types and allows users to explore easily.</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">HTML:5</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">CSS:3</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row-reverse bg-[#1F2937] rounded-2xl overflow-hidden mb-16 shadow-2xl border border-gray-800">
+      <div class="md:w-1/2 p-6 md:p-10 bg-[#111827] flex flex-col gap-3 justify-center items-center">
+        <img src="picture/project-pic/asharib1.JPG" alt="Foodie Web 1" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+        <img src="picture/project-pic/asharib2.JPG" alt="Foodie Web 2" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <h3 class="text-3xl font-bold text-white mb-6">Foodie</h3>
+        <p class="text-gray-400 mb-4 leading-relaxed">Foodie is an online website where people can find tasty and fresh food. It has many options like burgers, salads, and sandwiches. The pictures and prices are shown clearly.</p>
+        <p class="text-gray-400 mb-8 leading-relaxed">The website also tells about the chefs who cook the food. Customers can read reviews and ratings for every item, helping new users decide what to order.</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">HTML:5</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">CSS:3</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row bg-[#1F2937] rounded-2xl overflow-hidden mb-8 shadow-2xl border border-gray-800">
+      <div class="md:w-1/2 p-6 md:p-10 bg-[#111827] flex flex-col gap-3 justify-center items-center">
+        <img src="picture/project-pic/raziq1.JPG" alt="Bakery Web 1" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+        <img src="picture/project-pic/raziq2.JPG" alt="Bakery Web 2" class="rounded-lg shadow-md w-full md:w-[90%] hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <h3 class="text-3xl font-bold text-white mb-6">Bakery</h3>
+        <p class="text-gray-400 mb-4 leading-relaxed">This is a responsive single-page food and bakery website. It features multiple sections such as product cards, promotional banners, and a modern footer layout.</p>
+        <p class="text-gray-400 mb-8 leading-relaxed">The site includes interactive elements like a hamburger menu and product buttons. It is designed to offer users a clean and engaging browsing experience.</p>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">HTML:5</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">CSS:3</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+          <span class="bg-[#374151] text-gray-300 px-3 py-1 rounded-full text-sm font-medium">Bootstrap</span>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
-</center>
-
-<!-- get touch -->
-
-<div id="get-a-touch" class="text-center w-full h-[300px]">
-<div class="mt-15 justify-center flex text-center"><button class="rounded-xl bg-[#374151] w-[100px] h-[30px]">Get a touch</button></div>
-<p class="mt-5 pr-5 pl-5">What,s next?Feel free to reach you,re looking for <br class="hidden md:block">a developer, have a query, or simply want to connect.</p>
-<p class=" pr-5 pl-5 font-bold md:text-[25px] text-[17px] text-white mt-7 text-center md:pr-[0] md:pl-[0] pl-5 pr-5">📧 info@protfolio.com</p>
-<p class=" pr-5 pl-5 font-bold md:text-[25px] text-[20px] text-white text-center">📞 +123-456-7890</p>
-
-<div class="bg-[#1F2937] w-full h-[50px] flex justify-center items-center mt-[70px]">
-<a href="">Designed</a> and <a href="">coded</a> with ❤ by M.Faizan Hussain
-</div>
-
-</div>
-
-  </body>
+    
+    <!-- footer -->
+    <footer id="get-a-touch" class="py-8 px-6 pt-20 text-center border-t border-gray-800">
+      <button class="bg-gray-800 px-4 py-1 rounded-full text-sm mb-6">Get in touch</button>
+      <p class="text-lg text-gray-400 mb-8 max-w-md mx-auto">Feel free to reach out for projects or queries!</p>
+      <div class="space-y-4">
+        <h3 class="text-xl md:text-3xl font-bold text-white">📧 info@protfolio.com</h3>
+        <h3 class="text-xl md:text-3xl font-bold text-white">📞 +123-456-7890</h3>
+      </div>
+      <div class="mt-20 pt-10 border-t border-gray-900 text-sm text-gray-500">
+        Designed and coded with ❤️ by M. Faizan Hussain
+      </div>
+    </footer>
+    </body>
 </html>
-
